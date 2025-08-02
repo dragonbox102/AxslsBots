@@ -120,7 +120,7 @@ export default function GardenBot() {
     <div className="min-h-screen bg-gray-900 text-white">
       <Navigation />
       
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-8">
         <Button asChild variant="ghost" className="mb-8 text-discord-light hover:text-white">
           <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -128,28 +128,28 @@ export default function GardenBot() {
           </Link>
         </Button>
 
-        <div className="grid lg:grid-cols-3 gap-8 min-h-0">
+        <div className="grid lg:grid-cols-4 gap-6">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-3 space-y-6">
             {/* Bot Header */}
             <Card className="bg-discord-gray border-gray-700">
               <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
                   <img 
                     src={bot.avatar!} 
                     alt={`${bot.name} avatar`} 
-                    className="w-20 h-20 rounded-full border-4 border-discord"
+                    className="w-16 h-16 rounded-full border-2 border-discord flex-shrink-0"
                   />
-                  <div className="flex-1">
-                    <h1 className="text-3xl font-bold mb-2">{bot.name}</h1>
-                    <div className="flex items-center space-x-3">
-                      <Badge className="bg-discord-success text-black font-semibold">
+                  <div className="flex-1 min-w-0">
+                    <h1 className="text-2xl font-bold mb-2">{bot.name}</h1>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Badge className="bg-discord-success text-black font-semibold text-xs">
                         LIVE
                       </Badge>
                       {bot.rating && (
                         <div className="flex items-center">
-                          <Star className="text-yellow-400 w-5 h-5 fill-current" />
-                          <span className="font-semibold ml-1 text-lg">
+                          <Star className="text-yellow-400 w-4 h-4 fill-current" />
+                          <span className="font-semibold ml-1">
                             {(bot.rating / 100).toFixed(2)}/5
                           </span>
                         </div>
@@ -158,15 +158,14 @@ export default function GardenBot() {
                   </div>
                 </div>
 
-                <p className="text-discord-light mb-6">{bot.longDescription}</p>
+                <p className="text-discord-light mb-6 text-sm leading-relaxed">{bot.longDescription}</p>
 
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-3">
                   {bot.inviteUrl && (
                     <Button asChild className="bg-discord hover:bg-discord-dark">
                       <a href={bot.inviteUrl} target="_blank" rel="noopener noreferrer">
                         <Plus className="w-4 h-4 mr-2" />
                         Invite to Server
-                        <ExternalLink className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
                   )}
@@ -175,7 +174,6 @@ export default function GardenBot() {
                       <a href={bot.voteUrl} target="_blank" rel="noopener noreferrer">
                         <Heart className="w-4 h-4 mr-2" />
                         Vote on Top.gg
-                        <ExternalLink className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
                   )}
@@ -276,13 +274,13 @@ export default function GardenBot() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+          <div className="space-y-4">
             {/* Statistics */}
             <Card className="bg-discord-gray border-gray-700">
-              <CardHeader>
-                <CardTitle>Statistics</CardTitle>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">Statistics</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3 text-sm">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <Server className="w-4 h-4 mr-2 text-blue-400" />
@@ -323,12 +321,12 @@ export default function GardenBot() {
 
             {/* Quick Actions */}
             <Card className="bg-discord-gray border-gray-700">
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">Quick Actions</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2">
                 {bot.inviteUrl && (
-                  <Button asChild className="w-full bg-discord hover:bg-discord-dark">
+                  <Button asChild className="w-full bg-discord hover:bg-discord-dark text-sm">
                     <a href={bot.inviteUrl} target="_blank" rel="noopener noreferrer">
                       <Plus className="w-4 h-4 mr-2" />
                       Add to Server
@@ -336,7 +334,7 @@ export default function GardenBot() {
                   </Button>
                 )}
                 {bot.voteUrl && (
-                  <Button asChild variant="outline" className="w-full border-discord text-discord hover:bg-discord hover:text-white">
+                  <Button asChild variant="outline" className="w-full border-discord text-discord hover:bg-discord hover:text-white text-sm">
                     <a href={bot.voteUrl} target="_blank" rel="noopener noreferrer">
                       <Heart className="w-4 h-4 mr-2" />
                       Vote on Top.gg
@@ -348,14 +346,14 @@ export default function GardenBot() {
 
             {/* Support */}
             <Card className="bg-discord-gray border-gray-700">
-              <CardHeader>
-                <CardTitle>Need Help?</CardTitle>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">Need Help?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-discord-light text-sm mb-4">
+                <p className="text-discord-light text-xs mb-3">
                   Join our Discord server for support and updates!
                 </p>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full text-sm">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Join Discord
                 </Button>
