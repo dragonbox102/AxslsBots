@@ -32,7 +32,7 @@ export default function GardenBot() {
     queryKey: ['/api/bots/garden'],
   });
 
-  const { data: reviews, isLoading: reviewsLoading, error: reviewsError } = useQuery<Review[]>({
+  const { data: reviews, isLoading: reviewsLoading } = useQuery<Review[]>({
     queryKey: ['/api/bots/garden/reviews'],
   });
 
@@ -76,12 +76,10 @@ export default function GardenBot() {
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         <Navigation />
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
           <Skeleton className="h-10 w-32 mb-8" />
-          <div className="space-y-6">
-            <Skeleton className="h-64 w-full" />
-            <Skeleton className="h-32 w-full" />
-          </div>
+          <Skeleton className="h-64 w-full mb-6" />
+          <Skeleton className="h-32 w-full" />
         </div>
       </div>
     );
@@ -91,21 +89,15 @@ export default function GardenBot() {
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         <Navigation />
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <Card className="bg-discord-gray border-red-500/50 max-w-md mx-auto">
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-2 text-red-400 mb-4">
-                <AlertCircle className="h-5 w-5" />
-                <h3 className="font-semibold">Bot Not Found</h3>
-              </div>
-              <p className="text-discord-light text-sm mb-4">
-                Unable to find the garden bot information.
-              </p>
-              <Button asChild variant="outline">
-                <Link href="/">← Back to Home</Link>
-              </Button>
-            </CardContent>
-          </Card>
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
+          <div className="text-center py-12">
+            <AlertCircle className="h-12 w-12 mx-auto mb-4 text-red-400" />
+            <h2 className="text-xl font-semibold mb-2">Bot Not Found</h2>
+            <p className="text-discord-light mb-4">Unable to find the garden bot information.</p>
+            <Button asChild variant="outline">
+              <Link href="/">← Back to Home</Link>
+            </Button>
+          </div>
         </div>
       </div>
     );
@@ -115,7 +107,8 @@ export default function GardenBot() {
     <div className="min-h-screen bg-gray-900 text-white">
       <Navigation />
       
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Back Button */}
         <Button asChild variant="ghost" className="mb-8 text-discord-light hover:text-white">
           <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -123,35 +116,39 @@ export default function GardenBot() {
           </Link>
         </Button>
 
-        {/* Bot Header */}
-        <Card className="bg-discord-gray border-gray-700 mb-6">
+        {/* Bot Header Card */}
+        <Card className="mb-6 bg-discord-gray border-gray-700">
           <CardContent className="p-6">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
               <img 
                 src={bot.avatar!} 
                 alt={`${bot.name} avatar`} 
-                className="w-24 h-24 rounded-full border-2 border-discord flex-shrink-0"
+                className="w-20 h-20 rounded-full border-2 border-discord flex-shrink-0"
               />
-              <div className="flex-1 text-center sm:text-left">
-                <h1 className="text-3xl font-bold mb-3">{bot.name}</h1>
-                <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3 mb-4">
-                  <Badge className="bg-discord-success text-black font-semibold">
-                    LIVE
-                  </Badge>
-                  {bot.rating && (
-                    <div className="flex items-center">
-                      <Star className="text-yellow-400 w-5 h-5 fill-current" />
-                      <span className="font-semibold ml-1 text-lg">
-                        {(bot.rating / 100).toFixed(2)}/5
-                      </span>
-                      <span className="text-discord-light ml-1">
-                        ({bot.reviewCount} reviews)
-                      </span>
-                    </div>
-                  )}
+              <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                  <h1 className="text-2xl font-bold mb-2 sm:mb-0">{bot.name}</h1>
+                  <div className="flex items-center gap-2">
+                    <Badge className="bg-green-500 text-black font-semibold text-xs">
+                      LIVE
+                    </Badge>
+                    {bot.rating && (
+                      <div className="flex items-center">
+                        <Star className="text-yellow-400 w-4 h-4 fill-current" />
+                        <span className="font-semibold ml-1">
+                          {(bot.rating / 100).toFixed(1)}/5
+                        </span>
+                        <span className="text-discord-light ml-1 text-sm">
+                          ({bot.reviewCount} reviews)
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <p className="text-discord-light mb-6">{bot.longDescription}</p>
-                <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+                
+                <p className="text-discord-light mb-6 leading-relaxed">{bot.longDescription}</p>
+                
+                <div className="flex flex-wrap gap-3">
                   {bot.inviteUrl && (
                     <Button asChild className="bg-discord hover:bg-discord-dark">
                       <a href={bot.inviteUrl} target="_blank" rel="noopener noreferrer">
@@ -176,39 +173,39 @@ export default function GardenBot() {
           </CardContent>
         </Card>
 
-        {/* Statistics */}
-        <Card className="bg-discord-gray border-gray-700 mb-6">
+        {/* Statistics Card */}
+        <Card className="mb-6 bg-discord-gray border-gray-700">
           <CardHeader>
             <CardTitle>Statistics</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-4 bg-gray-800 rounded-lg">
+              <div className="bg-gray-800 rounded-lg p-4 text-center">
                 <Server className="w-6 h-6 mx-auto mb-2 text-blue-400" />
                 <div className="font-bold text-lg text-white">{bot.serverCount}+</div>
-                <div className="text-xs text-discord-light">Servers</div>
+                <div className="text-xs text-gray-400">Servers</div>
               </div>
-              <div className="text-center p-4 bg-gray-800 rounded-lg">
+              <div className="bg-gray-800 rounded-lg p-4 text-center">
                 <Clock className="w-6 h-6 mx-auto mb-2 text-green-400" />
                 <div className="font-bold text-lg text-green-400">{bot.uptime || 0}%</div>
-                <div className="text-xs text-discord-light">Uptime</div>
+                <div className="text-xs text-gray-400">Uptime</div>
               </div>
-              <div className="text-center p-4 bg-gray-800 rounded-lg">
+              <div className="bg-gray-800 rounded-lg p-4 text-center">
                 <Star className="w-6 h-6 mx-auto mb-2 text-yellow-400" />
                 <div className="font-bold text-lg text-white">{bot.rating ? (bot.rating / 100).toFixed(1) : '0.0'}/5</div>
-                <div className="text-xs text-discord-light">Rating</div>
+                <div className="text-xs text-gray-400">Rating</div>
               </div>
-              <div className="text-center p-4 bg-gray-800 rounded-lg">
+              <div className="bg-gray-800 rounded-lg p-4 text-center">
                 <Users className="w-6 h-6 mx-auto mb-2 text-purple-400" />
                 <div className="font-bold text-lg text-white">{bot.reviewCount}</div>
-                <div className="text-xs text-discord-light">Reviews</div>
+                <div className="text-xs text-gray-400">Reviews</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Features */}
-        <Card className="bg-discord-gray border-gray-700 mb-6">
+        {/* Features Card */}
+        <Card className="mb-6 bg-discord-gray border-gray-700">
           <CardHeader>
             <CardTitle className="flex items-center">
               <Settings className="w-5 h-5 mr-2" />
@@ -216,13 +213,13 @@ export default function GardenBot() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-3">
               {bot.features.map((feature, index) => {
                 const IconComponent = getFeatureIcon(feature);
                 return (
-                  <div key={index} className="flex items-center space-x-3">
+                  <div key={index} className="flex items-center space-x-3 bg-gray-800 p-3 rounded-lg">
                     <IconComponent className="text-discord w-5 h-5 flex-shrink-0" />
-                    <span className="text-white">{feature}</span>
+                    <span className="text-white text-sm">{feature}</span>
                   </div>
                 );
               })}
@@ -230,8 +227,8 @@ export default function GardenBot() {
           </CardContent>
         </Card>
 
-        {/* Reviews */}
-        <Card className="bg-discord-gray border-gray-700">
+        {/* Reviews Card */}
+        <Card className="mb-6 bg-discord-gray border-gray-700">
           <CardHeader>
             <CardTitle className="flex items-center">
               <MessageCircle className="w-5 h-5 mr-2" />
@@ -250,13 +247,6 @@ export default function GardenBot() {
                     </div>
                   </div>
                 ))}
-              </div>
-            )}
-
-            {reviewsError && (
-              <div className="text-red-400 text-center py-4">
-                <AlertCircle className="w-5 h-5 mx-auto mb-2" />
-                Failed to load reviews
               </div>
             )}
 
@@ -280,7 +270,7 @@ export default function GardenBot() {
                             {formatDate(review.createdAt)}
                           </span>
                         </div>
-                        <p className="text-discord-light">{review.content}</p>
+                        <p className="text-discord-light text-sm">{review.content}</p>
                       </div>
                     </div>
                     {index < reviews.length - 1 && <Separator className="mt-6 bg-gray-700" />}
