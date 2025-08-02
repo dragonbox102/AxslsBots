@@ -148,9 +148,9 @@ export default function BotCard({ bot }: BotCardProps) {
             </Button>
           )}
           
-          <Button asChild variant="outline" className="w-full border-discord text-discord hover:bg-discord hover:text-white text-sm">
-            <Link href={`/bot/${bot.id}`}>
-              <Eye className="w-4 h-4 mr-2" />
+          <Button asChild variant="outline" className="w-full border-discord text-black hover:bg-discord hover:text-white text-sm bg-white">
+            <Link href={`/bot/${bot.id}`} className="text-black">
+              <Eye className="w-4 h-4 mr-2 text-black" />
               View Details
             </Link>
           </Button>
