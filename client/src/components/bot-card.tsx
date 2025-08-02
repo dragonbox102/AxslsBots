@@ -1,8 +1,8 @@
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Bot as BotType } from "@/lib/types";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { Card, CardContent } from "./ui/card";
+import { Bot as BotType } from "../lib/types";
 import { 
   Star, 
   Plus, 
