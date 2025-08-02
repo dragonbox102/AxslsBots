@@ -20,7 +20,7 @@ export default function Home() {
       
       {/* Bots Section */}
       <section id="bots" className="py-20 px-4 bg-gray-800">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Bot Collection</h2>
             <p className="text-discord-light text-lg max-w-2xl mx-auto">
@@ -29,22 +29,22 @@ export default function Home() {
           </div>
 
           {isLoading && (
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 max-w-5xl mx-auto">
               {[...Array(3)].map((_, i) => (
                 <Card key={i} className="bg-discord-gray border-gray-700">
                   <CardContent className="p-6">
-                    <Skeleton className="w-20 h-20 rounded-full mx-auto mb-6" />
+                    <Skeleton className="w-16 h-16 rounded-full mx-auto mb-4" />
                     <Skeleton className="h-6 w-3/4 mx-auto mb-2" />
                     <Skeleton className="h-4 w-1/2 mx-auto mb-4" />
-                    <Skeleton className="h-16 w-full mb-6" />
+                    <Skeleton className="h-10 w-full mb-4" />
                     <div className="space-y-2 mb-6">
-                      <Skeleton className="h-4 w-full" />
-                      <Skeleton className="h-4 w-full" />
-                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-3 w-full" />
+                      <Skeleton className="h-3 w-full" />
+                      <Skeleton className="h-3 w-full" />
                     </div>
-                    <div className="flex gap-3">
-                      <Skeleton className="h-10 flex-1" />
-                      <Skeleton className="h-10 flex-1" />
+                    <div className="space-y-2">
+                      <Skeleton className="h-9 w-full" />
+                      <Skeleton className="h-9 w-full" />
                     </div>
                   </CardContent>
                 </Card>
@@ -67,7 +67,7 @@ export default function Home() {
           )}
 
           {bots && (
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 max-w-5xl mx-auto">
               {bots.map((bot) => (
                 <BotCard key={bot.id} bot={bot} />
               ))}
