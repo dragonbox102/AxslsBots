@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "buildCommand": "vite build",
+  "outputDirectory": "dist/public",
+  "functions": {
+    "api/bots.ts": {
+      "runtime": "nodejs20.x"
+    },
+    "api/reviews.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/bots",
+      "dest": "/api/bots"
+    },
+    {
+      "src": "/api/bots/([^/]+)",
+      "dest": "/api/bots?id=$1"
+    },
+    {
+      "src": "/api/bots/([^/]+)/reviews",
+      "dest": "/api/reviews?botId=$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

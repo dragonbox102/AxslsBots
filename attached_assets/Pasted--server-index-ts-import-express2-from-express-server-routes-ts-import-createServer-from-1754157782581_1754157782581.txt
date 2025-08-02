@@ -1,0 +1,352 @@
+// server/index.ts
+import express2 from "express";
+
+// server/routes.ts
+import { createServer } from "http";
+
+// server/storage.ts
+import { randomUUID } from "crypto";
+var MemStorage = class {
+  bots;
+  reviews;
+  constructor() {
+    this.bots = /* @__PURE__ */ new Map();
+    this.reviews = /* @__PURE__ */ new Map();
+    this.initializeData();
+  }
+  initializeData() {
+    const gardenBot = {
+      id: "garden",
+      name: "Grow a Garden Stocks",
+      description: "Real-time stock tracker for the Grow a Garden game. Track eggs, gears, seeds, and rare items with instant notifications.",
+      longDescription: "\u{1F33F} This tool gives you free, real-time updates on everything in the Grow a Garden game. Whether you're farming for seeds, collecting eggs, or hunting down rare gears, our stock tracker bot keeps you instantly updated. It automatically checks for the latest stock changes and notifies you the moment something new appears. No payments, no premium plans \u2014 just fast, free info straight to your server or device.",
+      avatar: "https://external-cdn.top.gg/discord/bots/1391400860944175125/fcdd835276c8dd55655e0d39cfd263e0.webp",
+      status: "live",
+      rating: 467,
+      // 4.67 * 100
+      reviewCount: 3,
+      serverCount: 50,
+      uptime: 90,
+      features: [
+        "Real-time stock tracking",
+        "Instant notifications",
+        "Egg tracking",
+        "Gear monitoring",
+        "Seed updates",
+        "Event notifications",
+        "Weather tracking",
+        "Mobile & desktop friendly"
+      ],
+      inviteUrl: "https://top.gg/bot/1391400860944175125/invite",
+      voteUrl: "https://top.gg/bot/1391400860944175125/vote",
+      topggId: "1391400860944175125",
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    const moderationBot = {
+      id: "moderation",
+      name: "Moderation Bot",
+      description: "Advanced moderation tools with auto-moderation, user management, and detailed logging. Coming soon!",
+      longDescription: "Advanced moderation tools with auto-moderation, user management, and detailed logging. This bot will provide comprehensive server management capabilities completely free.",
+      avatar: null,
+      status: "development",
+      rating: null,
+      reviewCount: 0,
+      serverCount: 0,
+      uptime: null,
+      features: [
+        "Auto-moderation system",
+        "User management tools",
+        "Detailed audit logs",
+        "Warning system",
+        "Content filtering",
+        "Moderation analytics"
+      ],
+      inviteUrl: null,
+      voteUrl: null,
+      topggId: null,
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    const musicBot = {
+      id: "music",
+      name: "Music Bot",
+      description: "High-quality music streaming with playlist support, queue management, and multiple source integration.",
+      longDescription: "High-quality music streaming with playlist support, queue management, and multiple source integration. Enjoy your favorite music with your Discord community, completely free.",
+      avatar: null,
+      status: "development",
+      rating: null,
+      reviewCount: 0,
+      serverCount: 0,
+      uptime: null,
+      features: [
+        "High-quality streaming",
+        "Playlist management",
+        "Multiple music sources",
+        "Shuffle & repeat",
+        "Volume controls",
+        "Smart search"
+      ],
+      inviteUrl: null,
+      voteUrl: null,
+      topggId: null,
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    this.bots.set("garden", gardenBot);
+    this.bots.set("moderation", moderationBot);
+    this.bots.set("music", musicBot);
+    const review1 = {
+      id: randomUUID(),
+      botId: "garden",
+      username: "bicozine",
+      avatar: "https://cdn.discordapp.com/avatars/763068297230417920/7bdc16089c076a54dd24234d8073220a.png",
+      rating: 4,
+      content: "bery bery bery cool bot its elegant and fancy the bot is professional and quick with responds . all the commands are fine and cool",
+      createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1e3)
+      // 3 days ago
+    };
+    const review2 = {
+      id: randomUUID(),
+      botId: "garden",
+      username: "RaySullyPlays",
+      avatar: "https://cdn.discordapp.com/avatars/903688978530697296/9d308cbfcb6f2c7a29662392b0e8da4e.png",
+      rating: 5,
+      content: "genuinely a really good gag bot and the dev is a really nice guy too",
+      createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1e3)
+      // 3 days ago
+    };
+    const review3 = {
+      id: randomUUID(),
+      botId: "garden",
+      username: "oooirty",
+      avatar: "https://cdn.discordapp.com/embed/avatars/0.png",
+      rating: 5,
+      content: "Very good bot fast response everything free some slash commands take long but thats okay",
+      createdAt: new Date(Date.now() - 25 * 60 * 1e3)
+      // 25 minutes ago
+    };
+    this.reviews.set(review1.id, review1);
+    this.reviews.set(review2.id, review2);
+    this.reviews.set(review3.id, review3);
+  }
+  async getBots() {
+    return Array.from(this.bots.values());
+  }
+  async getBotById(id) {
+    return this.bots.get(id);
+  }
+  async createBot(insertBot) {
+    const bot = {
+      ...insertBot,
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    this.bots.set(bot.id, bot);
+    return bot;
+  }
+  async getReviewsByBotId(botId) {
+    return Array.from(this.reviews.values()).filter((review) => review.botId === botId);
+  }
+  async createReview(insertReview) {
+    const id = randomUUID();
+    const review = {
+      ...insertReview,
+      id,
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    this.reviews.set(id, review);
+    return review;
+  }
+};
+var storage = new MemStorage();
+
+// server/routes.ts
+async function registerRoutes(app2) {
+  app2.get("/api/bots", async (req, res) => {
+    try {
+      const bots = await storage.getBots();
+      res.json(bots);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch bots" });
+    }
+  });
+  app2.get("/api/bots/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const bot = await storage.getBotById(id);
+      if (!bot) {
+        return res.status(404).json({ message: "Bot not found" });
+      }
+      res.json(bot);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch bot" });
+    }
+  });
+  app2.get("/api/bots/:id/reviews", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const reviews = await storage.getReviewsByBotId(id);
+      res.json(reviews);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch reviews" });
+    }
+  });
+  const httpServer = createServer(app2);
+  return httpServer;
+}
+
+// server/vite.ts
+import express from "express";
+import fs from "fs";
+import path2 from "path";
+import { createServer as createViteServer, createLogger } from "vite";
+
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+var vite_config_default = defineConfig({
+  plugins: [
+    react(),
+    runtimeErrorOverlay(),
+    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
+      await import("@replit/vite-plugin-cartographer").then(
+        (m) => m.cartographer()
+      )
+    ] : []
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
+      "@assets": path.resolve(import.meta.dirname, "attached_assets")
+    }
+  },
+  root: path.resolve(import.meta.dirname, "client"),
+  build: {
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    emptyOutDir: true
+  },
+  server: {
+    fs: {
+      strict: true,
+      deny: ["**/.*"]
+    }
+  }
+});
+
+// server/vite.ts
+import { nanoid } from "nanoid";
+var viteLogger = createLogger();
+function log(message, source = "express") {
+  const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
+async function setupVite(app2, server) {
+  const serverOptions = {
+    middlewareMode: true,
+    hmr: { server },
+    allowedHosts: true
+  };
+  const vite = await createViteServer({
+    ...vite_config_default,
+    configFile: false,
+    customLogger: {
+      ...viteLogger,
+      error: (msg, options) => {
+        viteLogger.error(msg, options);
+        process.exit(1);
+      }
+    },
+    server: serverOptions,
+    appType: "custom"
+  });
+  app2.use(vite.middlewares);
+  app2.use("*", async (req, res, next) => {
+    const url = req.originalUrl;
+    try {
+      const clientTemplate = path2.resolve(
+        import.meta.dirname,
+        "..",
+        "client",
+        "index.html"
+      );
+      let template = await fs.promises.readFile(clientTemplate, "utf-8");
+      template = template.replace(
+        `src="/src/main.tsx"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
+      );
+      const page = await vite.transformIndexHtml(url, template);
+      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+    } catch (e) {
+      vite.ssrFixStacktrace(e);
+      next(e);
+    }
+  });
+}
+function serveStatic(app2) {
+  const distPath = path2.resolve(import.meta.dirname, "public");
+  if (!fs.existsSync(distPath)) {
+    throw new Error(
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
+    );
+  }
+  app2.use(express.static(distPath));
+  app2.use("*", (_req, res) => {
+    res.sendFile(path2.resolve(distPath, "index.html"));
+  });
+}
+
+// server/index.ts
+var app = express2();
+app.use(express2.json());
+app.use(express2.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+  const start = Date.now();
+  const path3 = req.path;
+  let capturedJsonResponse = void 0;
+  const originalResJson = res.json;
+  res.json = function(bodyJson, ...args) {
+    capturedJsonResponse = bodyJson;
+    return originalResJson.apply(res, [bodyJson, ...args]);
+  };
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    if (path3.startsWith("/api")) {
+      let logLine = `${req.method} ${path3} ${res.statusCode} in ${duration}ms`;
+      if (capturedJsonResponse) {
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      }
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "\u2026";
+      }
+      log(logLine);
+    }
+  });
+  next();
+});
+(async () => {
+  const server = await registerRoutes(app);
+  app.use((err, _req, res, _next) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(status).json({ message });
+    throw err;
+  });
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+  const port = parseInt(process.env.PORT || "5000", 10);
+  server.listen({
+    port,
+    host: "0.0.0.0",
+    reusePort: true
+  }, () => {
+    log(`serving on port ${port}`);
+  });
+})();
