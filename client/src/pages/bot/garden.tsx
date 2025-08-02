@@ -76,16 +76,11 @@ export default function GardenBot() {
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         <Navigation />
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-4 py-8">
           <Skeleton className="h-10 w-32 mb-8" />
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <Skeleton className="h-64 w-full mb-6" />
-              <Skeleton className="h-32 w-full" />
-            </div>
-            <div>
-              <Skeleton className="h-48 w-full" />
-            </div>
+          <div className="space-y-6">
+            <Skeleton className="h-64 w-full" />
+            <Skeleton className="h-32 w-full" />
           </div>
         </div>
       </div>
@@ -96,7 +91,7 @@ export default function GardenBot() {
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         <Navigation />
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-4 py-8">
           <Card className="bg-discord-gray border-red-500/50 max-w-md mx-auto">
             <CardContent className="pt-6">
               <div className="flex items-center gap-2 text-red-400 mb-4">
@@ -120,7 +115,7 @@ export default function GardenBot() {
     <div className="min-h-screen bg-gray-900 text-white">
       <Navigation />
       
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-8">
         <Button asChild variant="ghost" className="mb-8 text-discord-light hover:text-white">
           <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -128,44 +123,41 @@ export default function GardenBot() {
           </Link>
         </Button>
 
-        <div className="grid lg:grid-cols-4 gap-6">
-          {/* Main Content */}
-          <div className="lg:col-span-3 space-y-6">
-            {/* Bot Header */}
-            <Card className="bg-discord-gray border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                  <img 
-                    src={bot.avatar!} 
-                    alt={`${bot.name} avatar`} 
-                    className="w-16 h-16 rounded-full border-2 border-discord flex-shrink-0"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <h1 className="text-2xl font-bold mb-2">{bot.name}</h1>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <Badge className="bg-discord-success text-black font-semibold text-xs">
-                        LIVE
-                      </Badge>
-                      {bot.rating && (
-                        <div className="flex items-center">
-                          <Star className="text-yellow-400 w-4 h-4 fill-current" />
-                          <span className="font-semibold ml-1">
-                            {(bot.rating / 100).toFixed(2)}/5
-                          </span>
-                        </div>
-                      )}
+        {/* Bot Header */}
+        <Card className="bg-discord-gray border-gray-700 mb-6">
+          <CardContent className="p-6">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <img 
+                src={bot.avatar!} 
+                alt={`${bot.name} avatar`} 
+                className="w-24 h-24 rounded-full border-2 border-discord flex-shrink-0"
+              />
+              <div className="flex-1 text-center sm:text-left">
+                <h1 className="text-3xl font-bold mb-3">{bot.name}</h1>
+                <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3 mb-4">
+                  <Badge className="bg-discord-success text-black font-semibold">
+                    LIVE
+                  </Badge>
+                  {bot.rating && (
+                    <div className="flex items-center">
+                      <Star className="text-yellow-400 w-5 h-5 fill-current" />
+                      <span className="font-semibold ml-1 text-lg">
+                        {(bot.rating / 100).toFixed(2)}/5
+                      </span>
+                      <span className="text-discord-light ml-1">
+                        ({bot.reviewCount} reviews)
+                      </span>
                     </div>
-                  </div>
+                  )}
                 </div>
-
-                <p className="text-discord-light mb-6 text-sm leading-relaxed">{bot.longDescription}</p>
-
-                <div className="flex flex-wrap gap-3">
+                <p className="text-discord-light mb-6">{bot.longDescription}</p>
+                <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                   {bot.inviteUrl && (
                     <Button asChild className="bg-discord hover:bg-discord-dark">
                       <a href={bot.inviteUrl} target="_blank" rel="noopener noreferrer">
                         <Plus className="w-4 h-4 mr-2" />
                         Invite to Server
+                        <ExternalLink className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
                   )}
@@ -174,193 +166,141 @@ export default function GardenBot() {
                       <a href={bot.voteUrl} target="_blank" rel="noopener noreferrer">
                         <Heart className="w-4 h-4 mr-2" />
                         Vote on Top.gg
+                        <ExternalLink className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
                   )}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-            {/* Features */}
-            <Card className="bg-discord-gray border-gray-700">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Settings className="w-5 h-5 mr-2" />
-                  Features
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {bot.features.map((feature, index) => {
-                    const IconComponent = getFeatureIcon(feature);
-                    return (
-                      <div key={index} className="flex items-center space-x-3 p-3 bg-gray-800 rounded-lg">
-                        <IconComponent className="text-discord w-5 h-5 flex-shrink-0" />
-                        <span className="text-white">{feature}</span>
-                      </div>
-                    );
-                  })}
+        {/* Statistics */}
+        <Card className="bg-discord-gray border-gray-700 mb-6">
+          <CardHeader>
+            <CardTitle>Statistics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <Server className="w-6 h-6 mx-auto mb-2 text-blue-400" />
+                <div className="font-semibold">{bot.serverCount}+</div>
+                <div className="text-xs text-discord-light">Servers</div>
+              </div>
+              {bot.uptime && (
+                <div className="text-center">
+                  <Clock className="w-6 h-6 mx-auto mb-2 text-green-400" />
+                  <div className="font-semibold text-green-400">{bot.uptime}%</div>
+                  <div className="text-xs text-discord-light">Uptime</div>
                 </div>
-              </CardContent>
-            </Card>
+              )}
+              {bot.rating && (
+                <div className="text-center">
+                  <Star className="w-6 h-6 mx-auto mb-2 text-yellow-400" />
+                  <div className="font-semibold">{(bot.rating / 100).toFixed(2)}/5</div>
+                  <div className="text-xs text-discord-light">Rating</div>
+                </div>
+              )}
+              <div className="text-center">
+                <Users className="w-6 h-6 mx-auto mb-2 text-purple-400" />
+                <div className="font-semibold">{bot.reviewCount}</div>
+                <div className="text-xs text-discord-light">Reviews</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-            {/* Reviews Section - ONLY for Garden Bot */}
-            <Card className="bg-discord-gray border-gray-700">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  User Reviews
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {reviewsLoading && (
-                  <div className="space-y-4">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="flex space-x-3">
-                        <Skeleton className="w-10 h-10 rounded-full flex-shrink-0" />
-                        <div className="flex-1 space-y-2 min-w-0">
-                          <Skeleton className="h-4 w-1/4" />
-                          <Skeleton className="h-16 w-full" />
-                        </div>
-                      </div>
-                    ))}
+        {/* Features */}
+        <Card className="bg-discord-gray border-gray-700 mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <Settings className="w-5 h-5 mr-2" />
+              Features
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-4">
+              {bot.features.map((feature, index) => {
+                const IconComponent = getFeatureIcon(feature);
+                return (
+                  <div key={index} className="flex items-center space-x-3">
+                    <IconComponent className="text-discord w-5 h-5 flex-shrink-0" />
+                    <span className="text-white">{feature}</span>
                   </div>
-                )}
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
 
-                {reviewsError && (
-                  <div className="text-red-400 text-center py-4">
-                    <AlertCircle className="w-5 h-5 mx-auto mb-2" />
-                    Failed to load reviews
+        {/* Reviews */}
+        <Card className="bg-discord-gray border-gray-700">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <MessageCircle className="w-5 h-5 mr-2" />
+              User Reviews
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {reviewsLoading && (
+              <div className="space-y-4">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex space-x-3">
+                    <Skeleton className="w-10 h-10 rounded-full flex-shrink-0" />
+                    <div className="flex-1 space-y-2">
+                      <Skeleton className="h-4 w-1/4" />
+                      <Skeleton className="h-16 w-full" />
+                    </div>
                   </div>
-                )}
+                ))}
+              </div>
+            )}
 
-                {reviews && reviews.length > 0 && (
-                  <div className="space-y-6">
-                    {reviews.map((review, index) => (
-                      <div key={review.id}>
-                        <div className="flex items-start space-x-3">
-                          <img 
-                            src={review.avatar} 
-                            alt={`${review.username} avatar`} 
-                            className="w-10 h-10 rounded-full flex-shrink-0"
-                          />
-                          <div className="flex-1 min-w-0">
-                            <div className="flex flex-wrap items-center gap-2 mb-1">
-                              <span className="font-semibold text-white">{review.username}</span>
-                              <div className="flex">
-                                {renderStars(review.rating)}
-                              </div>
-                              <span className="text-xs text-discord-light">
-                                {formatDate(review.createdAt)}
-                              </span>
-                            </div>
-                            <p className="text-discord-light break-words">{review.content}</p>
+            {reviewsError && (
+              <div className="text-red-400 text-center py-4">
+                <AlertCircle className="w-5 h-5 mx-auto mb-2" />
+                Failed to load reviews
+              </div>
+            )}
+
+            {reviews && reviews.length > 0 && (
+              <div className="space-y-6">
+                {reviews.map((review, index) => (
+                  <div key={review.id}>
+                    <div className="flex items-start space-x-3">
+                      <img 
+                        src={review.avatar} 
+                        alt={`${review.username} avatar`} 
+                        className="w-10 h-10 rounded-full flex-shrink-0"
+                      />
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className="font-semibold text-white">{review.username}</span>
+                          <div className="flex">
+                            {renderStars(review.rating)}
                           </div>
+                          <span className="text-xs text-discord-light">
+                            {formatDate(review.createdAt)}
+                          </span>
                         </div>
-                        {index < reviews.length - 1 && <Separator className="mt-6 bg-gray-700" />}
+                        <p className="text-discord-light">{review.content}</p>
                       </div>
-                    ))}
-                  </div>
-                )}
-
-                {reviews && reviews.length === 0 && (
-                  <div className="text-center py-8 text-discord-light">
-                    <MessageCircle className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                    <p>No reviews yet. Be the first to review this bot!</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-4">
-            {/* Statistics */}
-            <Card className="bg-discord-gray border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Statistics</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 text-sm">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <Server className="w-4 h-4 mr-2 text-blue-400" />
-                    <span className="text-discord-light">Servers:</span>
-                  </div>
-                  <span className="font-semibold">{bot.serverCount}+</span>
-                </div>
-                
-                {bot.uptime && (
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-2 text-green-400" />
-                      <span className="text-discord-light">Uptime:</span>
                     </div>
-                    <span className="font-semibold text-green-400">{bot.uptime}%</span>
+                    {index < reviews.length - 1 && <Separator className="mt-6 bg-gray-700" />}
                   </div>
-                )}
-                
-                {bot.rating && (
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <Star className="w-4 h-4 mr-2 text-yellow-400" />
-                      <span className="text-discord-light">Rating:</span>
-                    </div>
-                    <span className="font-semibold">{(bot.rating / 100).toFixed(2)}/5</span>
-                  </div>
-                )}
-                
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <Users className="w-4 h-4 mr-2 text-purple-400" />
-                    <span className="text-discord-light">Reviews:</span>
-                  </div>
-                  <span className="font-semibold">{bot.reviewCount}</span>
-                </div>
-              </CardContent>
-            </Card>
+                ))}
+              </div>
+            )}
 
-            {/* Quick Actions */}
-            <Card className="bg-discord-gray border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {bot.inviteUrl && (
-                  <Button asChild className="w-full bg-discord hover:bg-discord-dark text-sm">
-                    <a href={bot.inviteUrl} target="_blank" rel="noopener noreferrer">
-                      <Plus className="w-4 h-4 mr-2" />
-                      Add to Server
-                    </a>
-                  </Button>
-                )}
-                {bot.voteUrl && (
-                  <Button asChild variant="outline" className="w-full border-discord text-discord hover:bg-discord hover:text-white text-sm">
-                    <a href={bot.voteUrl} target="_blank" rel="noopener noreferrer">
-                      <Heart className="w-4 h-4 mr-2" />
-                      Vote on Top.gg
-                    </a>
-                  </Button>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Support */}
-            <Card className="bg-discord-gray border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Need Help?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-discord-light text-xs mb-3">
-                  Join our Discord server for support and updates!
-                </p>
-                <Button variant="outline" className="w-full text-sm">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Join Discord
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+            {reviews && reviews.length === 0 && (
+              <div className="text-center py-8 text-discord-light">
+                <MessageCircle className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                <p>No reviews yet. Be the first to review this bot!</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
 
       <Footer />
