@@ -1,14 +1,8 @@
 {
-  "version": 2,
+  "installCommand": "npm install --prefix client",
+  "buildCommand": "npm run build --prefix client",
+  "outputDirectory": "client/dist",
   "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "rootDirectory": "client",
-        "outputDirectory": "dist"
-      }
-    },
     {
       "src": "api/index.ts",
       "use": "@vercel/node"
