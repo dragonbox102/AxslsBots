@@ -154,6 +154,16 @@ export class MemStorage implements IStorage {
   async createBot(insertBot: InsertBot): Promise<Bot> {
     const bot: Bot = {
       ...insertBot,
+      longDescription: insertBot.longDescription ?? null,
+      avatar: insertBot.avatar ?? null,
+      rating: insertBot.rating ?? null,
+      reviewCount: insertBot.reviewCount ?? null,
+      serverCount: insertBot.serverCount ?? null,
+      uptime: insertBot.uptime ?? null,
+      features: insertBot.features ?? [],
+      inviteUrl: insertBot.inviteUrl ?? null,
+      voteUrl: insertBot.voteUrl ?? null,
+      topggId: insertBot.topggId ?? null,
       createdAt: new Date(),
     };
     this.bots.set(bot.id, bot);
@@ -168,6 +178,7 @@ export class MemStorage implements IStorage {
     const id = randomUUID();
     const review: Review = {
       ...insertReview,
+      avatar: insertReview.avatar ?? null,
       id,
       createdAt: new Date(),
     };
