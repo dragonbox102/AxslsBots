@@ -80,8 +80,8 @@ export default function BotCard({ bot }: BotCardProps) {
   const IconComponent = getBotIcon(bot.id);
   
   return (
-    <Card className="bg-discord-gray border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
-      <CardContent className="p-6">
+    <Card className="bg-discord-gray border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-105 group h-full flex flex-col">
+      <CardContent className="p-6 flex-1 flex flex-col">
         <div className="relative mb-6">
           {bot.avatar ? (
             <img 
@@ -126,19 +126,19 @@ export default function BotCard({ bot }: BotCardProps) {
           {bot.description}
         </p>
 
-        <div className="space-y-3 mb-6">
+        <div className="space-y-3 mb-6 flex-1">
           {bot.features.slice(0, 3).map((feature, index) => {
             const FeatureIcon = getFeatureIcon(feature);
             return (
               <div key={index} className="flex items-center text-sm">
                 <FeatureIcon className="text-discord w-4 h-4 flex-shrink-0" />
-                <span className="ml-2 text-discord-light">{feature}</span>
+                <span className="ml-2 text-discord-light break-words">{feature}</span>
               </div>
             );
           })}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex gap-3 mt-auto">
           {bot.status === 'live' && bot.inviteUrl ? (
             <Button asChild className="flex-1 bg-discord hover:bg-discord-dark">
               <a href={bot.inviteUrl} target="_blank" rel="noopener noreferrer">

@@ -120,7 +120,7 @@ export default function GardenBot() {
     <div className="min-h-screen bg-gray-900 text-white">
       <Navigation />
       
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <Button asChild variant="ghost" className="mb-8 text-discord-light hover:text-white">
           <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -128,7 +128,7 @@ export default function GardenBot() {
           </Link>
         </Button>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 min-h-0">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Bot Header */}
@@ -219,8 +219,8 @@ export default function GardenBot() {
                   <div className="space-y-4">
                     {[...Array(3)].map((_, i) => (
                       <div key={i} className="flex space-x-3">
-                        <Skeleton className="w-10 h-10 rounded-full" />
-                        <div className="flex-1 space-y-2">
+                        <Skeleton className="w-10 h-10 rounded-full flex-shrink-0" />
+                        <div className="flex-1 space-y-2 min-w-0">
                           <Skeleton className="h-4 w-1/4" />
                           <Skeleton className="h-16 w-full" />
                         </div>
@@ -244,10 +244,10 @@ export default function GardenBot() {
                           <img 
                             src={review.avatar} 
                             alt={`${review.username} avatar`} 
-                            className="w-10 h-10 rounded-full"
+                            className="w-10 h-10 rounded-full flex-shrink-0"
                           />
-                          <div className="flex-1">
-                            <div className="flex items-center space-x-2 mb-1">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-wrap items-center gap-2 mb-1">
                               <span className="font-semibold text-white">{review.username}</span>
                               <div className="flex">
                                 {renderStars(review.rating)}
@@ -256,7 +256,7 @@ export default function GardenBot() {
                                 {formatDate(review.createdAt)}
                               </span>
                             </div>
-                            <p className="text-discord-light">{review.content}</p>
+                            <p className="text-discord-light break-words">{review.content}</p>
                           </div>
                         </div>
                         {index < reviews.length - 1 && <Separator className="mt-6 bg-gray-700" />}
@@ -276,7 +276,7 @@ export default function GardenBot() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:sticky lg:top-20 lg:self-start">
             {/* Statistics */}
             <Card className="bg-discord-gray border-gray-700">
               <CardHeader>

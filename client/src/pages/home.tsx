@@ -29,7 +29,7 @@ export default function Home() {
           </div>
 
           {isLoading && (
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
               {[...Array(3)].map((_, i) => (
                 <Card key={i} className="bg-discord-gray border-gray-700">
                   <CardContent className="p-6">
@@ -67,7 +67,7 @@ export default function Home() {
           )}
 
           {bots && (
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
               {bots.map((bot) => (
                 <BotCard key={bot.id} bot={bot} />
               ))}
