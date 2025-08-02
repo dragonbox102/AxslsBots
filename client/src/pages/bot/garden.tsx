@@ -159,11 +159,11 @@ export default function GardenBot() {
                     </Button>
                   )}
                   {bot.voteUrl && (
-                    <Button asChild variant="outline" className="border-discord text-discord hover:bg-discord hover:text-white">
-                      <a href={bot.voteUrl} target="_blank" rel="noopener noreferrer">
-                        <Heart className="w-4 h-4 mr-2" />
+                    <Button asChild variant="outline" className="border-discord text-black hover:bg-discord hover:text-white bg-white">
+                      <a href={bot.voteUrl} target="_blank" rel="noopener noreferrer" className="text-black">
+                        <Heart className="w-4 h-4 mr-2 text-black" />
                         Vote on Top.gg
-                        <ExternalLink className="w-4 h-4 ml-2" />
+                        <ExternalLink className="w-4 h-4 ml-2 text-black" />
                       </a>
                     </Button>
                   )}
