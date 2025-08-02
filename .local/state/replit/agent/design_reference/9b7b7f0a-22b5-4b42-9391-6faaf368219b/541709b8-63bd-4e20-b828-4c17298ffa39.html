@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axsls Discord Bots - Fully Free Bot Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'discord': '#5865F2',
+                        'discord-dark': '#4752C4',
+                        'discord-gray': '#2C2F33',
+                        'discord-light': '#99AAB5',
+                        'discord-success': '#57F287',
+                        'discord-error': '#ED4245'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-inter">
+    <!-- Navigation -->
+    <nav class="bg-discord-gray shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-discord rounded-full flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">Axsls Discord Bots</span>
+                    <span class="bg-discord-success text-black px-2 py-1 rounded-full text-xs font-semibold">FULLY FREE</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-discord-light hover:text-white transition-colors">Home</a>
+                    <a href="#bots" class="text-discord-light hover:text-white transition-colors">Bots</a>
+                    <a href="#support" class="text-discord-light hover:text-white transition-colors">Support</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-discord-light"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-20 px-4">
+        <!-- Discord-themed abstract background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-discord/20 via-gray-900 to-gray-800"></div>
+        <div class="relative max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-discord to-purple-400 bg-clip-text text-transparent">
+                Axsls Discord Bots
+            </h1>
+            <p class="text-xl md:text-2xl text-discord-light mb-8 max-w-3xl mx-auto">
+                Professional Discord bots to enhance your server experience - completely free, no premium plans, no hidden costs
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <span class="bg-discord-success/20 text-discord-success px-4 py-2 rounded-full font-semibold">
+                    <i class="fas fa-check-circle mr-2"></i>100% Free Forever
+                </span>
+                <span class="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full font-semibold">
+                    <i class="fas fa-server mr-2"></i>50+ Servers
+                </span>
+                <span class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full font-semibold">
+                    <i class="fas fa-clock mr-2"></i>99% Uptime
+                </span>
+            </div>
+            <a href="#bots" class="bg-discord hover:bg-discord-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center">
+                <i class="fas fa-rocket mr-2"></i>Explore Our Bots
+            </a>
+        </div>
+    </section>
+
+    <!-- Bots Section -->
+    <section id="bots" class="py-20 px-4 bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our Bot Collection</h2>
+                <p class="text-discord-light text-lg max-w-2xl mx-auto">
+                    Each bot is designed with care to provide unique functionality for your Discord server
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Grow a Garden Stocks Bot (Live) -->
+                <!-- @COMPONENT: BotCard [live bot with real data] -->
+                <div class="bg-discord-gray rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700">
+                    <div class="relative mb-6">
+                        <img src="https://external-cdn.top.gg/discord/bots/1391400860944175125/fcdd835276c8dd55655e0d39cfd263e0.webp" 
+                             alt="Grow a garden stocks bot avatar" 
+                             class="w-20 h-20 rounded-full mx-auto border-4 border-discord">
+                        <div class="absolute -top-2 -right-2 bg-discord-success w-6 h-6 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-black text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-2">Grow a Garden Stocks</h3>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="bg-discord-success text-black px-3 py-1 rounded-full text-sm font-bold">LIVE</span>
+                        <div class="flex items-center ml-3">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-white font-semibold ml-1">4.67</span>
+                            <span class="text-discord-light ml-1">(3 reviews)</span>
+                        </div>
+                    </div>
+                    <p class="text-discord-light text-center mb-6">
+                        Real-time stock tracker for the Grow a Garden game. Track eggs, gears, seeds, and rare items with instant notifications.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-seedling text-green-400 w-4"></i>
+                            <span class="ml-2">Real-time stock tracking</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-bell text-blue-400 w-4"></i>
+                            <span class="ml-2">Instant notifications</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-mobile-alt text-purple-400 w-4"></i>
+                            <span class="ml-2">Mobile & desktop friendly</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://top.gg/bot/1391400860944175125/invite" 
+                           class="flex-1 bg-discord hover:bg-discord-dark text-white py-3 px-4 rounded-lg font-semibold text-center transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Invite Bot
+                        </a>
+                        <button onclick="showBotDetails('garden')" 
+                                class="flex-1 border border-discord text-discord hover:bg-discord hover:text-white py-3 px-4 rounded-lg font-semibold transition-colors">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: BotCard -->
+
+                <!-- Moderation Bot (In Development) -->
+                <!-- @COMPONENT: BotCard [development bot] -->
+                <div class="bg-discord-gray rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700 opacity-90">
+                    <div class="relative mb-6">
+                        <!-- Moderation bot interface placeholder -->
+                        <div class="w-20 h-20 rounded-full mx-auto border-4 border-yellow-500 bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-yellow-500 text-2xl"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 bg-yellow-500 w-6 h-6 rounded-full flex items-center justify-center">
+                            <i class="fas fa-hammer text-black text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-2">Moderation Bot</h3>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">IN DEVELOPMENT</span>
+                    </div>
+                    <p class="text-discord-light text-center mb-6">
+                        Advanced moderation tools with auto-moderation, user management, and detailed logging. Coming soon!
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-ban text-red-400 w-4"></i>
+                            <span class="ml-2">Auto-moderation system</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-users text-blue-400 w-4"></i>
+                            <span class="ml-2">User management tools</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-clipboard-list text-purple-400 w-4"></i>
+                            <span class="ml-2">Detailed audit logs</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button disabled 
+                                class="flex-1 bg-gray-600 text-gray-400 py-3 px-4 rounded-lg font-semibold text-center cursor-not-allowed">
+                            <i class="fas fa-clock mr-2"></i>Coming Soon
+                        </button>
+                        <button onclick="showBotDetails('moderation')" 
+                                class="flex-1 border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black py-3 px-4 rounded-lg font-semibold transition-colors">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: BotCard -->
+
+                <!-- Music Bot (In Development) -->
+                <!-- @COMPONENT: BotCard [development bot] -->
+                <div class="bg-discord-gray rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700 opacity-90">
+                    <div class="relative mb-6">
+                        <!-- Music streaming interface placeholder -->
+                        <div class="w-20 h-20 rounded-full mx-auto border-4 border-purple-500 bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-music text-purple-500 text-2xl"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 bg-purple-500 w-6 h-6 rounded-full flex items-center justify-center">
+                            <i class="fas fa-hammer text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-2">Music Bot</h3>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">IN DEVELOPMENT</span>
+                    </div>
+                    <p class="text-discord-light text-center mb-6">
+                        High-quality music streaming with playlist support, queue management, and multiple source integration.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-play text-green-400 w-4"></i>
+                            <span class="ml-2">High-quality streaming</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-list text-blue-400 w-4"></i>
+                            <span class="ml-2">Playlist management</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-cloud text-purple-400 w-4"></i>
+                            <span class="ml-2">Multiple music sources</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button disabled 
+                                class="flex-1 bg-gray-600 text-gray-400 py-3 px-4 rounded-lg font-semibold text-center cursor-not-allowed">
+                            <i class="fas fa-clock mr-2"></i>Coming Soon
+                        </button>
+                        <button onclick="showBotDetails('music')" 
+                                class="flex-1 border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white py-3 px-4 rounded-lg font-semibold transition-colors">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: BotCard -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Bot Details Modal -->
+    <!-- @COMPONENT: Modal [bot details display] -->
+    <div id="botModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-discord-gray rounded-xl max-w-4xl w-full max-h-screen overflow-y-auto">
+                <div class="p-6 border-b border-gray-700 flex justify-between items-center">
+                    <h3 id="modalTitle" class="text-2xl font-bold"></h3>
+                    <button onclick="closeBotDetails()" class="text-discord-light hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="modalContent" class="p-6">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: Modal -->
+
+    <!-- Footer -->
+    <footer class="bg-discord-gray py-12 px-4 border-t border-gray-700">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-discord rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <span class="text-lg font-bold">Axsls Discord Bots</span>
+                    </div>
+                    <p class="text-discord-light">
+                        Professional Discord bots that are completely free forever. No premium plans, no hidden costs.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#home" class="block text-discord-light hover:text-white transition-colors">Home</a>
+                        <a href="#bots" class="block text-discord-light hover:text-white transition-colors">Bot Collection</a>
+                        <a href="#support" class="block text-discord-light hover:text-white transition-colors">Support</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-discord-light hover:text-white transition-colors">
+                            <i class="fab fa-discord mr-2"></i>Discord Server
+                        </a>
+                        <a href="#" class="block text-discord-light hover:text-white transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Contact Us
+                        </a>
+                        <a href="#" class="block text-discord-light hover:text-white transition-colors">
+                            <i class="fas fa-book mr-2"></i>Documentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-discord-light">
+                <p>&copy; 2024 Axsls Discord Bots. All rights reserved. Fully free forever.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // TODO: Implement proper routing and state management for production
+        (function() {
+            function showBotDetails(botType) {
+                const modal = document.getElementById('botModal');
+                const title = document.getElementById('modalTitle');
+                const content = document.getElementById('modalContent');
+                
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                if (botType === 'garden') {
+                    title.textContent = 'Grow a Garden Stocks - Bot Details';
+                    content.innerHTML = `
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://external-cdn.top.gg/discord/bots/1391400860944175125/fcdd835276c8dd55655e0d39cfd263e0.webp" 
+                                     alt="Grow a garden stocks bot avatar" 
+                                     class="w-16 h-16 rounded-full border-2 border-discord">
+                                <div>
+                                    <h4 class="text-xl font-bold">Grow a Garden Stocks</h4>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="bg-discord-success text-black px-2 py-1 rounded text-sm font-bold">LIVE</span>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <span class="font-semibold ml-1">4.67/5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h5 class="font-semibold mb-2">Description</h5>
+                                <p class="text-discord-light">🌿 This tool gives you free, real-time updates on everything in the Grow a Garden game. Whether you're farming for seeds, collecting eggs, or hunting down rare gears, our stock tracker bot keeps you instantly updated. It automatically checks for the latest stock changes and notifies you the moment something new appears.</p>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-gray-800 p-4 rounded-lg">
+                                    <h5 class="font-semibold mb-3">Features</h5>
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-egg text-yellow-400 w-4"></i>
+                                            <span class="ml-2">Egg tracking</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-cog text-gray-400 w-4"></i>
+                                            <span class="ml-2">Gear monitoring</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-seedling text-green-400 w-4"></i>
+                                            <span class="ml-2">Seed updates</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-purple-400 w-4"></i>
+                                            <span class="ml-2">Event notifications</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-cloud-rain text-blue-400 w-4"></i>
+                                            <span class="ml-2">Weather tracking</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-800 p-4 rounded-lg">
+                                    <h5 class="font-semibold mb-3">Statistics</h5>
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex justify-between">
+                                            <span class="text-discord-light">Servers:</span>
+                                            <span class="font-semibold">50+</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-discord-light">Uptime:</span>
+                                            <span class="font-semibold text-green-400">90%</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-discord-light">Rating:</span>
+                                            <span class="font-semibold">4.67/5</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-discord-light">Reviews:</span>
+                                            <span class="font-semibold">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Reviews Section - ONLY for Garden Bot -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h5 class="font-semibold mb-4 flex items-center">
+                                    <i class="fas fa-comments mr-2"></i>User Reviews
+                                </h5>
+                                
+                                <!-- Review 1 -->
+                                <div class="border-b border-gray-700 pb-4 mb-4">
+                                    <div class="flex items-start space-x-3">
+                                        <img src="https://cdn.discordapp.com/avatars/763068297230417920/7bdc16089c076a54dd24234d8073220a.png" 
+                                             alt="bicozine avatar" class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <span class="font-semibold">bicozine</span>
+                                                <div class="flex text-yellow-400">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                                <span class="text-xs text-discord-light">3 days ago</span>
+                                            </div>
+                                            <p class="text-sm text-discord-light">bery bery bery cool bot its elegant and fancy the bot is professional and quick with responds . all the commands are fine and cool</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Review 2 -->
+                                <div class="border-b border-gray-700 pb-4 mb-4">
+                                    <div class="flex items-start space-x-3">
+                                        <img src="https://cdn.discordapp.com/avatars/903688978530697296/9d308cbfcb6f2c7a29662392b0e8da4e.png" 
+                                             alt="RaySullyPlays avatar" class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <span class="font-semibold">RaySullyPlays</span>
+                                                <div class="flex text-yellow-400">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="text-xs text-discord-light">3 days ago</span>
+                                            </div>
+                                            <p class="text-sm text-discord-light">genuinely a really good gag bot and the dev is a really nice guy too</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Review 3 -->
+                                <div class="pb-4 mb-4">
+                                    <div class="flex items-start space-x-3">
+                                        <img src="https://cdn.discordapp.com/embed/avatars/0.png" 
+                                             alt="oooirty avatar" class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <span class="font-semibold">oooirty</span>
+                                                <div class="flex text-yellow-400">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="text-xs text-discord-light">25 minutes ago</span>
+                                            </div>
+                                            <p class="text-sm text-discord-light">Very good bot fast response everything free some slash commands take long but thats okay</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <a href="https://top.gg/bot/1391400860944175125/invite" 
+                                   class="flex-1 bg-discord hover:bg-discord-dark text-white py-3 px-4 rounded-lg font-semibold text-center transition-colors">
+                                    <i class="fas fa-plus mr-2"></i>Invite to Server
+                                </a>
+                                <a href="https://top.gg/bot/1391400860944175125/vote" 
+                                   class="flex-1 border border-discord text-discord hover:bg-discord hover:text-white py-3 px-4 rounded-lg font-semibold text-center transition-colors">
+                                    <i class="fas fa-heart mr-2"></i>Vote on Top.gg
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                } else if (botType === 'moderation') {
+                    title.textContent = 'Moderation Bot - Coming Soon';
+                    content.innerHTML = `
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 rounded-full border-2 border-yellow-500 bg-yellow-500/20 flex items-center justify-center">
+                                    <i class="fas fa-shield-alt text-yellow-500 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Moderation Bot</h4>
+                                    <span class="bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold">IN DEVELOPMENT</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h5 class="font-semibold mb-2">Coming Soon</h5>
+                                <p class="text-discord-light">Advanced moderation tools with auto-moderation, user management, and detailed logging. This bot will provide comprehensive server management capabilities completely free.</p>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h5 class="font-semibold mb-3">Planned Features</h5>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-ban text-red-400 w-4"></i>
+                                            <span class="ml-2">Auto-moderation system</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users text-blue-400 w-4"></i>
+                                            <span class="ml-2">User management</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-clipboard-list text-purple-400 w-4"></i>
+                                            <span class="ml-2">Detailed audit logs</span>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-exclamation-triangle text-yellow-400 w-4"></i>
+                                            <span class="ml-2">Warning system</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-filter text-green-400 w-4"></i>
+                                            <span class="ml-2">Content filtering</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-chart-bar text-purple-400 w-4"></i>
+                                            <span class="ml-2">Moderation analytics</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fas fa-info-circle text-yellow-500 mr-2"></i>
+                                    <span class="font-semibold">Development Status</span>
+                                </div>
+                                <p class="text-sm text-discord-light mt-2">This bot is currently in active development. Join our Discord server for updates and beta testing opportunities!</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (botType === 'music') {
+                    title.textContent = 'Music Bot - Coming Soon';
+                    content.innerHTML = `
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 rounded-full border-2 border-purple-500 bg-purple-500/20 flex items-center justify-center">
+                                    <i class="fas fa-music text-purple-500 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Music Bot</h4>
+                                    <span class="bg-purple-500 text-white px-2 py-1 rounded text-sm font-bold">IN DEVELOPMENT</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h5 class="font-semibold mb-2">Coming Soon</h5>
+                                <p class="text-discord-light">High-quality music streaming with playlist support, queue management, and multiple source integration. Enjoy your favorite music with your Discord community, completely free.</p>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h5 class="font-semibold mb-3">Planned Features</h5>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-play text-green-400 w-4"></i>
+                                            <span class="ml-2">High-quality streaming</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-list text-blue-400 w-4"></i>
+                                            <span class="ml-2">Playlist management</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-cloud text-purple-400 w-4"></i>
+                                            <span class="ml-2">Multiple music sources</span>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-random text-yellow-400 w-4"></i>
+                                            <span class="ml-2">Shuffle & repeat</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-volume-up text-red-400 w-4"></i>
+                                            <span class="ml-2">Volume controls</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-search text-cyan-400 w-4"></i>
+                                            <span class="ml-2">Smart search</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-purple-500/10 border border-purple-500/30 p-4 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fas fa-info-circle text-purple-500 mr-2"></i>
+                                    <span class="font-semibold">Development Status</span>
+                                </div>
+                                <p class="text-sm text-discord-light mt-2">This bot is currently in active development. Join our Discord server for updates and beta testing opportunities!</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            function closeBotDetails() {
+                const modal = document.getElementById('botModal');
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Make functions globally available
+            window.showBotDetails = showBotDetails;
+            window.closeBotDetails = closeBotDetails;
+            
+            // Close modal when clicking outside
+            document.getElementById('botModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeBotDetails();
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
