@@ -182,30 +182,26 @@ export default function GardenBot() {
             <CardTitle>Statistics</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center">
-                <Server className="w-6 h-6 mx-auto mb-2 text-blue-400" />
-                <div className="font-semibold">{bot.serverCount}+</div>
-                <div className="text-xs text-discord-light">Servers</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center p-4">
+                <Server className="w-8 h-8 mx-auto mb-3 text-blue-400" />
+                <div className="font-bold text-xl">{bot.serverCount}+</div>
+                <div className="text-sm text-discord-light">Servers</div>
               </div>
-              {bot.uptime && (
-                <div className="text-center">
-                  <Clock className="w-6 h-6 mx-auto mb-2 text-green-400" />
-                  <div className="font-semibold text-green-400">{bot.uptime}%</div>
-                  <div className="text-xs text-discord-light">Uptime</div>
-                </div>
-              )}
-              {bot.rating && (
-                <div className="text-center">
-                  <Star className="w-6 h-6 mx-auto mb-2 text-yellow-400" />
-                  <div className="font-semibold">{(bot.rating / 100).toFixed(2)}/5</div>
-                  <div className="text-xs text-discord-light">Rating</div>
-                </div>
-              )}
-              <div className="text-center">
-                <Users className="w-6 h-6 mx-auto mb-2 text-purple-400" />
-                <div className="font-semibold">{bot.reviewCount}</div>
-                <div className="text-xs text-discord-light">Reviews</div>
+              <div className="text-center p-4">
+                <Clock className="w-8 h-8 mx-auto mb-3 text-green-400" />
+                <div className="font-bold text-xl text-green-400">{bot.uptime || 0}%</div>
+                <div className="text-sm text-discord-light">Uptime</div>
+              </div>
+              <div className="text-center p-4">
+                <Star className="w-8 h-8 mx-auto mb-3 text-yellow-400" />
+                <div className="font-bold text-xl">{bot.rating ? (bot.rating / 100).toFixed(1) : '0.0'}/5</div>
+                <div className="text-sm text-discord-light">Rating</div>
+              </div>
+              <div className="text-center p-4">
+                <Users className="w-8 h-8 mx-auto mb-3 text-purple-400" />
+                <div className="font-bold text-xl">{bot.reviewCount}</div>
+                <div className="text-sm text-discord-light">Reviews</div>
               </div>
             </div>
           </CardContent>
