@@ -74,6 +74,14 @@
   .text-gray-400, .text-gray-500, .text-gray-600 {
     @apply text-white !important;
   }
+
+  /* Make outline button text black for readability on white backgrounds */
+  .bg-white a, .bg-white button, .bg-white span,
+  button[data-variant="outline"] *, 
+  [data-variant="outline"] *,
+  .border-discord a, .border-discord span {
+    @apply text-black !important;
+  }
 }
 
 @layer utilities {
